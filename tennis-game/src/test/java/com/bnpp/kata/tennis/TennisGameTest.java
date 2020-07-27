@@ -31,4 +31,9 @@ public class TennisGameTest {
 		assertThat("FirstPlayer", is(tennisGame.getFirstPlayerName()));
 		assertThat("SecondPlayer", is(tennisGame.getSecondPlayerName()));
 	}
+
+	@Test
+	public void gameScoreShouldBeLoveAllwhenBeforeTheGameStarts() {
+		assertThat("Love-All", is(tennisGame.calculateGameScore()));
+	}
 }

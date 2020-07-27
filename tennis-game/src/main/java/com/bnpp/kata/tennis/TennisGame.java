@@ -28,4 +28,8 @@ public class TennisGame {
 		return secondPlayer.getName();
 	}
 
+	public Object calculateGameScore() {
+		return "Love-All";
+	}
+
 }
