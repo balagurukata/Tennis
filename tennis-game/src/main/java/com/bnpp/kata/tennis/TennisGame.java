@@ -8,10 +8,8 @@ public class TennisGame {
 	private Player secondPlayer;
 
 	public TennisGame() {
-		firstPlayer = new Player();
-		firstPlayer.setName("FirstPlayer");
-		secondPlayer = new Player();
-		secondPlayer.setName("SecondPlayer");
+		firstPlayer = new Player("FirstPlayer");
+		secondPlayer = new Player("SecondPlayer");
 	}
 
 	public Object getFirstPlayerScoredPoint() {
