@@ -6,4 +6,8 @@ public class TennisGame {
 		return 0;
 	}
 
+	public Object getSecondPlayerScoredPoint() {
+		return 0;
+	}
+
 }
