@@ -1,32 +1,33 @@
 package com.bnpp.kata.tennis;
 
+import com.bnpp.kata.tennis.model.Player;
+
 public class TennisGame {
 
-	private int firstPlayerScoredPoint;
-	private int secondPlayerScoredPoint;
-
-	private String firstPlayerName;
-	private String secondPlayerName;
+	private Player firstPlayer;
+	private Player secondPlayer;
 
 	public TennisGame() {
-		firstPlayerName = "FirstPlayer";
-		secondPlayerName = "SecondPlayer";
+		firstPlayer = new Player();
+		firstPlayer.setName("FirstPlayer");
+		secondPlayer = new Player();
+		secondPlayer.setName("SecondPlayer");
 	}
 
 	public Object getFirstPlayerScoredPoint() {
-		return firstPlayerScoredPoint;
+		return firstPlayer.getScoredPoint();
 	}
 
 	public Object getSecondPlayerScoredPoint() {
-		return secondPlayerScoredPoint;
+		return secondPlayer.getScoredPoint();
 	}
 
 	public Object getFirstPlayerName() {
-		return firstPlayerName;
+		return firstPlayer.getName();
 	}
 
 	public Object getSecondPlayerName() {
-		return secondPlayerName;
+		return secondPlayer.getName();
 	}
 
 }
