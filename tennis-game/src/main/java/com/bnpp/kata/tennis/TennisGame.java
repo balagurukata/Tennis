@@ -1,6 +1,7 @@
 package com.bnpp.kata.tennis;
 
 import com.bnpp.kata.tennis.model.Player;
+import static com.bnpp.kata.tennis.utils.TennisGameConstants.*;
 
 public class TennisGame {
 
@@ -10,8 +11,8 @@ public class TennisGame {
 	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty", "Forty" };
 
 	public TennisGame() {
-		firstPlayer = new Player("FirstPlayer");
-		secondPlayer = new Player("SecondPlayer");
+		firstPlayer = new Player(DEFAULT_FIRST_PLAYER_NAME);
+		secondPlayer = new Player(DEFAULT_SECOND_PLAYER_NAME);
 	}
 
 	public int getFirstPlayerScoredPoint() {
@@ -31,20 +32,20 @@ public class TennisGame {
 	}
 
 	public String calculateGameScore() {
-		String gameScore = "";
+		String gameScore = INITIAL_GAME_SCORE;
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
-			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
+			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
 		} else if (isGameWonByAnyPlayer()) {
-			gameScore = getPlayerOfTheGame() + " Won the game";
+			gameScore = getPlayerOfTheGame() + GAME_WON_RESULT;
 		} else {
-			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
+			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
 	}
 
 	private boolean isGameWonByAnyPlayer() {
-		return (firstPlayer.getScoredPoint() >= 4 || secondPlayer.getScoredPoint() >= 4)
-				&& Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) >= 2;
+		return (firstPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE || secondPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE)
+				&& Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) >= MINIMUM_WINNING_DIFFERENCE_POINT;
 	}
 
 	private String getPlayerOfTheGame() {
