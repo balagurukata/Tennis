@@ -1,6 +1,8 @@
 package com.bnpp.kata.tennis;
 
 import com.bnpp.kata.tennis.model.Player;
+import com.bnpp.kata.tennis.model.PlayerIndicator;
+
 import static com.bnpp.kata.tennis.utils.TennisGameConstants.*;
 
 public class TennisGame {
@@ -11,8 +13,7 @@ public class TennisGame {
 	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty", "Forty" };
 
 	public TennisGame() {
-		firstPlayer = new Player(DEFAULT_FIRST_PLAYER_NAME);
-		secondPlayer = new Player(DEFAULT_SECOND_PLAYER_NAME);
+		this(DEFAULT_FIRST_PLAYER_NAME, DEFAULT_SECOND_PLAYER_NAME);
 	}
 
 	public TennisGame(String firstPlayerName, String secondPlayerName) {
@@ -85,10 +86,10 @@ public class TennisGame {
 		secondPlayer.incrementPlayerScore();
 	}
 
-	public void addServicePointToWinner(String winningPlayerIndicator) {
-		if ("A".equals(winningPlayerIndicator)) {
+	public void addServicePointToWinner(char winningPlayerIndicator) {
+		if (PlayerIndicator.PLAYER1.getValue() == winningPlayerIndicator) {
 			incrementFirstPlayerScore();
-		} else if ("B".endsWith(winningPlayerIndicator)) {
+		} else if (PlayerIndicator.PLAYER2.getValue() == winningPlayerIndicator) {
 			incrementSecondPlayerScore();
 		}
 	}

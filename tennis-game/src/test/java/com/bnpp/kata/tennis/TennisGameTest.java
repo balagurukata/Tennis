@@ -129,7 +129,7 @@ public class TennisGameTest {
         updateFirstPlayerScores(1);
 		updateSecondPlayerScores(1);
         int expectedFirstPlayerPoint = tennisGame.getFirstPlayerScoredPoint() + 1;
-        tennisGame.addServicePointToWinner("A");
+        tennisGame.addServicePointToWinner('A');
         assertThat(expectedFirstPlayerPoint, is(tennisGame.getFirstPlayerScoredPoint()));
     }
     
@@ -138,7 +138,7 @@ public class TennisGameTest {
         updateFirstPlayerScores(1);
 		updateSecondPlayerScores(2);
         int expectedSecondPlayerPoint = tennisGame.getSecondPlayerScoredPoint() + 1;
-        tennisGame.addServicePointToWinner("B");
+        tennisGame.addServicePointToWinner('B');
         assertThat(expectedSecondPlayerPoint, is(tennisGame.getSecondPlayerScoredPoint()));
     }
 }
