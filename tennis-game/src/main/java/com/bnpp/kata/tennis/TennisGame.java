@@ -34,22 +34,22 @@ public class TennisGame {
 		String gameScore = "";
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
-		} else if (isFirstPlayerWonTheGame()) {
-			return getFirstPlayerName() + " Won the game";
-		} else if(isSecondPlayerWonTheGame()){
-			return getSecondPlayerName() + " Won the game";
-		}else {
+		} else if (isGameWonByAnyPlayer()) {
+			gameScore = getPlayerOfTheGame() + " Won the game";
+		} else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
 	}
 
-	private boolean isSecondPlayerWonTheGame() {
-		return secondPlayer.getScoredPoint() >= 4 && (secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint() >= 2);
+	private boolean isGameWonByAnyPlayer() {
+		return (firstPlayer.getScoredPoint() >= 4 || secondPlayer.getScoredPoint() >= 4)
+				&& Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) >= 2;
 	}
 
-	private boolean isFirstPlayerWonTheGame() {
-		return firstPlayer.getScoredPoint() >= 4 && (firstPlayer.getScoredPoint() - secondPlayer.getScoredPoint() >= 2);
+	private String getPlayerOfTheGame() {
+		return firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName()
+				: secondPlayer.getName();
 	}
 
 	public void incrementFirstPlayerScore() {
