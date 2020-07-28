@@ -14,23 +14,23 @@ public class TennisGame {
 		secondPlayer = new Player("SecondPlayer");
 	}
 
-	public Object getFirstPlayerScoredPoint() {
+	public int getFirstPlayerScoredPoint() {
 		return firstPlayer.getScoredPoint();
 	}
 
-	public Object getSecondPlayerScoredPoint() {
+	public int getSecondPlayerScoredPoint() {
 		return secondPlayer.getScoredPoint();
 	}
 
-	public Object getFirstPlayerName() {
+	public String getFirstPlayerName() {
 		return firstPlayer.getName();
 	}
 
-	public Object getSecondPlayerName() {
+	public String getSecondPlayerName() {
 		return secondPlayer.getName();
 	}
 
-	public Object calculateGameScore() {
+	public String calculateGameScore() {
 		String gameScore = "";
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
 			gameScore = "Love-All";
