@@ -38,11 +38,18 @@ public class TennisGame {
 					: GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
 		} else if (isGameWonByAnyPlayer()) {
 			gameScore = getPlayerOfTheGame() + GAME_WON_RESULT;
-		} else {
+		} else if(isAnyPlayerAdvantage()) {
+			gameScore = getPlayerOfTheGame() + ADVANTAGE_GAME_SCORE;
+		}else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR
 					+ GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
+	}
+
+	private boolean isAnyPlayerAdvantage() {
+		return (firstPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE || secondPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE)
+                && (Math.abs(firstPlayer.getScoredPoint() - secondPlayer.getScoredPoint()) == ADVANTAGE_DIFFERENCE_POINT);
 	}
 
 	private boolean isPalyersHasDeuceScore() {
