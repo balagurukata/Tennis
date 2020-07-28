@@ -7,7 +7,7 @@ public class TennisGame {
 	private Player firstPlayer;
 	private Player secondPlayer;
 
-	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty", "Forty"};
+	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty", "Forty" };
 
 	public TennisGame() {
 		firstPlayer = new Player("FirstPlayer");
@@ -34,6 +34,9 @@ public class TennisGame {
 		String gameScore = "";
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
+		} else if (firstPlayer.getScoredPoint() >= 4
+				&& (firstPlayer.getScoredPoint() - secondPlayer.getScoredPoint() >= 2)) {
+			return getFirstPlayerName() + " Won the game";
 		} else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
