@@ -7,6 +7,8 @@ public class TennisGame {
 	private Player firstPlayer;
 	private Player secondPlayer;
 
+	private static final String[] GAME_SCORE = { "Love", "Fifteen" };
+
 	public TennisGame() {
 		firstPlayer = new Player("FirstPlayer");
 		secondPlayer = new Player("SecondPlayer");
@@ -29,7 +31,17 @@ public class TennisGame {
 	}
 
 	public Object calculateGameScore() {
-		return "Love-All";
+		String gameScore = "";
+		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
+			gameScore = "Love-All";
+		} else {
+			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
+		}
+		return gameScore;
+	}
+
+	public void incrementFirstPlayerScore() {
+		firstPlayer.incrementPlayerScore();
 	}
 
 }

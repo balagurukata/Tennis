@@ -36,4 +36,10 @@ public class TennisGameTest {
 	public void gameScoreShouldBeLoveAllwhenBeforeTheGameStarts() {
 		assertThat("Love-All", is(tennisGame.calculateGameScore()));
 	}
+	
+    @Test
+    public void firstPlayerScorePointShouldBeFifteenLoveWhenFirstPlayerGotAVeryFirstPoint() {
+        tennisGame.incrementFirstPlayerScore();
+        assertThat("Fifteen-Love", is(tennisGame.calculateGameScore()));
+    }
 }
