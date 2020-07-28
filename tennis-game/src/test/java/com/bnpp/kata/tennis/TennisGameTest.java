@@ -123,4 +123,13 @@ public class TennisGameTest {
         assertThat("AAA", is(tennisGame.getFirstPlayerName()));
         assertThat("BBB", is(tennisGame.getSecondPlayerName()));
     }
+    
+    @Test
+    public void gameScoreShouldBeAddedByOneForFirstPlayerWhenPlayerWinnerIndicatorAsA() {
+        updateFirstPlayerScores(1);
+		updateSecondPlayerScores(1);
+        int expectedFirstPlayerPoint = tennisGame.getFirstPlayerScoredPoint() + 1;
+        tennisGame.addServicePointToWinner("A");
+        assertThat(expectedFirstPlayerPoint, is(tennisGame.getFirstPlayerScoredPoint()));
+    }
 }
