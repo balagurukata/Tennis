@@ -14,11 +14,11 @@ public class TennisGame {
 		firstPlayer = new Player(DEFAULT_FIRST_PLAYER_NAME);
 		secondPlayer = new Player(DEFAULT_SECOND_PLAYER_NAME);
 	}
-	
-    public TennisGame(String firstPlayerName, String secondPlayerName) {
-    	firstPlayer = new Player(firstPlayerName);
-        secondPlayer = new Player(secondPlayerName);
-    }
+
+	public TennisGame(String firstPlayerName, String secondPlayerName) {
+		firstPlayer = new Player(firstPlayerName);
+		secondPlayer = new Player(secondPlayerName);
+	}
 
 	public int getFirstPlayerScoredPoint() {
 		return firstPlayer.getScoredPoint();
@@ -86,10 +86,11 @@ public class TennisGame {
 	}
 
 	public void addServicePointToWinner(String winningPlayerIndicator) {
-		if("A".equals(winningPlayerIndicator)) {
+		if ("A".equals(winningPlayerIndicator)) {
 			incrementFirstPlayerScore();
+		} else if ("B".endsWith(winningPlayerIndicator)) {
+			incrementSecondPlayerScore();
 		}
-		
 	}
 
 }
