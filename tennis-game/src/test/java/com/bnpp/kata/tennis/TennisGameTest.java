@@ -116,4 +116,11 @@ public class TennisGameTest {
 		updateSecondPlayerScores(3);
 		assertThat("FirstPlayer has advantage", is(tennisGame.calculateGameScore()));
 	}
+	
+    @Test
+    public void bothPlayerNamesShouldBeEqualsToCustomNamesWhichIsInitializedOnGameObjectCreation() {
+        tennisGame = new TennisGame("AAA", "BBB");
+        assertThat("AAA", is(tennisGame.getFirstPlayerName()));
+        assertThat("BBB", is(tennisGame.getSecondPlayerName()));
+    }
 }
