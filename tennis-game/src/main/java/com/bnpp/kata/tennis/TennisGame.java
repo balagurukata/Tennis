@@ -33,7 +33,7 @@ public class TennisGame {
 	public String calculateGameScore() {
 		String gameScore = "";
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
-			gameScore = "Love-All";
+			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
 		} else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
