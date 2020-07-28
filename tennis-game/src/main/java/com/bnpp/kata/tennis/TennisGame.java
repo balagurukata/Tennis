@@ -7,7 +7,7 @@ public class TennisGame {
 	private Player firstPlayer;
 	private Player secondPlayer;
 
-	private static final String[] GAME_SCORE = { "Love", "Fifteen" };
+	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty" };
 
 	public TennisGame() {
 		firstPlayer = new Player("FirstPlayer");
@@ -42,6 +42,10 @@ public class TennisGame {
 
 	public void incrementFirstPlayerScore() {
 		firstPlayer.incrementPlayerScore();
+	}
+
+	public void incrementSecondPlayerScore() {
+		secondPlayer.incrementPlayerScore();
 	}
 
 }

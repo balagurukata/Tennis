@@ -42,4 +42,11 @@ public class TennisGameTest {
         tennisGame.incrementFirstPlayerScore();
         assertThat("Fifteen-Love", is(tennisGame.calculateGameScore()));
     }
+    
+    @Test
+    public void gameScoreShouldBeLoveThirtyWhenSecondPlayerGotVeryFirstAndScondScorePointOfTheGame() {
+        tennisGame.incrementSecondPlayerScore();
+        tennisGame.incrementSecondPlayerScore();
+        assertThat("Love-Thirty", is(tennisGame.calculateGameScore()));
+    }
 }
