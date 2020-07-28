@@ -1,12 +1,16 @@
 package com.bnpp.kata.tennis;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
-
-import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
+@RunWith(JUnitParamsRunner.class)
 public class TennisGameTest {
 
 	private TennisGame tennisGame;
@@ -36,42 +40,52 @@ public class TennisGameTest {
 	public void gameScoreShouldBeLoveAllwhenBeforeTheGameStarts() {
 		assertThat("Love-All", is(tennisGame.calculateGameScore()));
 	}
-	
-    @Test
-    public void firstPlayerScorePointShouldBeFifteenLoveWhenFirstPlayerGotAVeryFirstPoint() {
-        updateFirstPlayerScores(1);
-        assertThat("Fifteen-Love", is(tennisGame.calculateGameScore()));
-    }
-    
-    @Test
-    public void gameScoreShouldBeLoveThirtyWhenSecondPlayerGotVeryFirstAndScondScorePointOfTheGame() {
-        updateSecondPlayerScores(2);
-        assertThat("Love-Thirty", is(tennisGame.calculateGameScore()));
-    }
-    
-    @Test
-    public void gameScoreShouldBeFifteenAllWhenFirstAndSecondPlayerGotSinglePointOfTheGame() {
-    	updateFirstPlayerScores(1);
-        updateSecondPlayerScores(1);
-        assertThat("Fifteen-All", is(tennisGame.calculateGameScore()));
-    }
-    
-    @Test
-    public void gameScoreShouldBeFifteenThirtyWhenFirstPlayerGotOnePointAndSecondPlayerGotTwoPointsInAllThreeServicesOfTheGame() {
-    	updateFirstPlayerScores(1);
-        updateSecondPlayerScores(2);
-        assertThat("Fifteen-Thirty", is(tennisGame.calculateGameScore()));
-    }
-    
-    private void updateFirstPlayerScores(int numberOfWins) {
-    	for (int i = 0; i < numberOfWins; i++) {
+
+	@Test
+	public void firstPlayerScorePointShouldBeFifteenLoveWhenFirstPlayerGotAVeryFirstPoint() {
+		updateFirstPlayerScores(1);
+		assertThat("Fifteen-Love", is(tennisGame.calculateGameScore()));
+	}
+
+	@Test
+	public void gameScoreShouldBeLoveThirtyWhenSecondPlayerGotVeryFirstAndScondScorePointOfTheGame() {
+		updateSecondPlayerScores(2);
+		assertThat("Love-Thirty", is(tennisGame.calculateGameScore()));
+	}
+
+	@Test
+	public void gameScoreShouldBeFifteenAllWhenFirstAndSecondPlayerGotSinglePointOfTheGame() {
+		updateFirstPlayerScores(1);
+		updateSecondPlayerScores(1);
+		assertThat("Fifteen-All", is(tennisGame.calculateGameScore()));
+	}
+
+	@Test
+	public void gameScoreShouldBeFifteenThirtyWhenFirstPlayerGotOnePointAndSecondPlayerGotTwoPointsInAllThreeServicesOfTheGame() {
+		updateFirstPlayerScores(1);
+		updateSecondPlayerScores(2);
+		assertThat("Fifteen-Thirty", is(tennisGame.calculateGameScore()));
+	}
+
+	private void updateFirstPlayerScores(int numberOfWins) {
+		for (int i = 0; i < numberOfWins; i++) {
 			tennisGame.incrementFirstPlayerScore();
 		}
-    }
-    
-    private void updateSecondPlayerScores(int numberOfWins) {
-    	for (int i = 0; i < numberOfWins; i++) {
+	}
+
+	private void updateSecondPlayerScores(int numberOfWins) {
+		for (int i = 0; i < numberOfWins; i++) {
 			tennisGame.incrementSecondPlayerScore();
 		}
-    }
+	}
+
+	@Test
+	@Parameters({ "1, 1, Fifteen-All", "0, 1, Love-Fifteen", "2, 1, Thirty-Fifteen", "2, 3, Thirty-Forty",
+			"2, 2, Thirty-All" })
+	public void gameScoreShouldBeExpectedResultWhichIsMentionedInPreDefinedParametersWithPlayersPointsOgTheGame(
+			int firstPlayerPoints, int secondPlayerPoints, String expectedGameResult) {
+		updateFirstPlayerScores(firstPlayerPoints);
+		updateSecondPlayerScores(secondPlayerPoints);
+		assertThat(expectedGameResult, is(tennisGame.calculateGameScore()));
+	}
 }

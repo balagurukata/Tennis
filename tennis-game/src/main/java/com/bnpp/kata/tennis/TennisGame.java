@@ -7,7 +7,7 @@ public class TennisGame {
 	private Player firstPlayer;
 	private Player secondPlayer;
 
-	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty" };
+	private static final String[] GAME_SCORE = { "Love", "Fifteen", "Thirty", "Forty"};
 
 	public TennisGame() {
 		firstPlayer = new Player("FirstPlayer");
