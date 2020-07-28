@@ -36,10 +36,16 @@ public class TennisGame {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
 		} else if (isFirstPlayerWonTheGame()) {
 			return getFirstPlayerName() + " Won the game";
-		} else {
+		} else if(isSecondPlayerWonTheGame()){
+			return getSecondPlayerName() + " Won the game";
+		}else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
+	}
+
+	private boolean isSecondPlayerWonTheGame() {
+		return secondPlayer.getScoredPoint() >= 4 && (secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint() >= 2);
 	}
 
 	private boolean isFirstPlayerWonTheGame() {
