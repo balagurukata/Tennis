@@ -34,7 +34,11 @@ public class TennisGame {
 	public String calculateGameScore() {
 		String gameScore = INITIAL_GAME_SCORE;
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
-			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
+			if(secondPlayer.getScoredPoint() >= 3 ) {
+				gameScore = DEUCE_GAME_SCORE;
+			}else {
+				gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
+			}
 		} else if (isGameWonByAnyPlayer()) {
 			gameScore = getPlayerOfTheGame() + GAME_WON_RESULT;
 		} else {

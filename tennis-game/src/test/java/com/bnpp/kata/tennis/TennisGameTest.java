@@ -102,4 +102,11 @@ public class TennisGameTest {
 		updateSecondPlayerScores(5);
 		assertThat("SecondPlayer Won the game", is(tennisGame.calculateGameScore()));
 	}
+	
+	@Test
+    public void gameScoreShouldBeDeuceWhenBothPlayersHavingSameScoreAsTheePoints() {
+		updateFirstPlayerScores(3);
+		updateSecondPlayerScores(3);
+		assertThat("Deuce", is(tennisGame.calculateGameScore()));
+    }
 }
