@@ -34,13 +34,16 @@ public class TennisGame {
 		String gameScore = "";
 		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-All";
-		} else if (firstPlayer.getScoredPoint() >= 4
-				&& (firstPlayer.getScoredPoint() - secondPlayer.getScoredPoint() >= 2)) {
+		} else if (isFirstPlayerWonTheGame()) {
 			return getFirstPlayerName() + " Won the game";
 		} else {
 			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + "-" + GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
+	}
+
+	private boolean isFirstPlayerWonTheGame() {
+		return firstPlayer.getScoredPoint() >= 4 && (firstPlayer.getScoredPoint() - secondPlayer.getScoredPoint() >= 2);
 	}
 
 	public void incrementFirstPlayerScore() {
