@@ -33,23 +33,31 @@ public class TennisGame {
 
 	public String calculateGameScore() {
 		String gameScore = INITIAL_GAME_SCORE;
-		if (firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint()) {
-			if(secondPlayer.getScoredPoint() >= 3 ) {
-				gameScore = DEUCE_GAME_SCORE;
-			}else {
-				gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
-			}
+		if (isPlayersHasEqualScore()) {
+			gameScore = isPalyersHasDeuceScore() ? DEUCE_GAME_SCORE
+					: GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
 		} else if (isGameWonByAnyPlayer()) {
 			gameScore = getPlayerOfTheGame() + GAME_WON_RESULT;
 		} else {
-			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE[secondPlayer.getScoredPoint()];
+			gameScore = GAME_SCORE[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR
+					+ GAME_SCORE[secondPlayer.getScoredPoint()];
 		}
 		return gameScore;
 	}
 
+	private boolean isPalyersHasDeuceScore() {
+		return secondPlayer.getScoredPoint() >= 3;
+	}
+
+	private boolean isPlayersHasEqualScore() {
+		return firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint();
+	}
+
 	private boolean isGameWonByAnyPlayer() {
-		return (firstPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE || secondPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE)
-				&& Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) >= MINIMUM_WINNING_DIFFERENCE_POINT;
+		return (firstPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE
+				|| secondPlayer.getScoredPoint() >= MINIMUM_WINNING_SCORE)
+				&& Math.abs(secondPlayer.getScoredPoint()
+						- firstPlayer.getScoredPoint()) >= MINIMUM_WINNING_DIFFERENCE_POINT;
 	}
 
 	private String getPlayerOfTheGame() {
